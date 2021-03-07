@@ -7,9 +7,7 @@ import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
 
-// import java.awt.image.BufferedImage;
-// import java.io.File;
-
+@SuppressWarnings("serial")
 public class AnimationBasic extends JPanel implements ActionListener{
     private final int WIDTH = 500, HEIGHT = 300;
     private int dirX = 1, dirY = -1;

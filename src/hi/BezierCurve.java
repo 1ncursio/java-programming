@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.awt.geom.*;
 
+@SuppressWarnings("serial")
 public class BezierCurve extends JFrame implements MouseListener, MouseMotionListener {
     private int[] xs = {50, 150, 400, 450};
     private int[] ys = {200, 50, 300, 200};
@@ -50,7 +51,6 @@ public class BezierCurve extends JFrame implements MouseListener, MouseMotionLis
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        System.out.println("mouseDragged");
         // TODO Auto-generated method stub
         // 선택된 점이 있는지 보고 즉 dragIndex가 -1이 아닌지 보고 선택된 점의 x y 좌표를 변경
         if (dragIndex != -1) {
@@ -64,7 +64,6 @@ public class BezierCurve extends JFrame implements MouseListener, MouseMotionLis
     public void mousePressed(MouseEvent e) {
             // TODO Auto-generated method stub
             // 네개의 점 중에서 어떤 점이 선택되었는지를 확인
-            System.out.println("mousePressed");
             dragIndex = -1; //1 2 3;
             for (int i = 0; i < 4; i++) {
                 Rectangle r = new Rectangle(xs[i] - 4, ys[i] - 4, 20, 20);
