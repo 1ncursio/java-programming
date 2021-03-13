@@ -8,9 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -61,6 +58,51 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() == orderBtn) {
+            sum = 0;
+            switch (temp1) {
+            case 0:
+                sum += 3000;
+                break;
+            case 1:
+                sum += 4000;
+                break;
+            case 2:
+                sum += 5000;
+                break;
+            default:
+                break;
+            }
+
+            switch (temp2) {
+            case 0:
+                sum += 100;
+                break;
+            case 1:
+                sum += 200;
+                break;
+            case 2:
+                sum += 300;
+                break;
+            case 3:
+                sum += 400;
+                break;
+            default:
+                break;
+            }
+
+            switch (temp3) {
+            case 0:
+                sum += 10000;
+                break;
+            case 1:
+                sum += 12000;
+                break;
+            case 2:
+                sum += 14000;
+                break;
+            default:
+                break;
+            }
             priceField.setText(String.valueOf(sum));
             System.out.println("타입:" + temp1 + ", 토핑:" + temp2 + ", 사이즈:" + temp3);
         } else if (e.getSource() == cancelBtn) {
@@ -81,18 +123,18 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
         }
     }
 
-    class TypePanel extends JPanel implements ChangeListener {
+    class TypePanel extends JPanel implements ActionListener {
         private JRadioButton combo, potato, bulgogi;
         private ButtonGroup btnGroup;
 
         public TypePanel() {
             this.setLayout(new GridLayout(3, 1));
-            combo = new JRadioButton("콤보", true);
-            combo.addChangeListener(this);
-            potato = new JRadioButton("포테이토");
-            potato.addChangeListener(this);
-            bulgogi = new JRadioButton("불고기");
-            bulgogi.addChangeListener(this);
+            combo = new JRadioButton("콤보 3000원", true);
+            combo.addActionListener(this);
+            potato = new JRadioButton("포테이토 4000원");
+            potato.addActionListener(this);
+            bulgogi = new JRadioButton("불고기 5000원");
+            bulgogi.addActionListener(this);
 
             btnGroup = new ButtonGroup();
             btnGroup.add(combo);
@@ -107,9 +149,7 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
         }
 
         @Override
-        public void stateChanged(ChangeEvent e) {
-            // TODO Auto-generated method stub
-            // System.out.println("타입 called");
+        public void actionPerformed(ActionEvent e) {
             if (e.getSource() == combo) {
                 temp1 = 0;
             } else if (e.getSource() == potato) {
@@ -121,20 +161,20 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
 
     }
 
-    class ToppingPanel extends JPanel implements ChangeListener {
+    class ToppingPanel extends JPanel implements ActionListener {
         private JRadioButton pepper, cheese, peperoni, bacon;
         private ButtonGroup btnGroup;
 
         public ToppingPanel() {
             this.setLayout(new GridLayout(4, 1));
-            pepper = new JRadioButton("피망", true);
-            pepper.addChangeListener(this);
-            cheese = new JRadioButton("치즈");
-            cheese.addChangeListener(this);
-            peperoni = new JRadioButton("페퍼로니");
-            peperoni.addChangeListener(this);
-            bacon = new JRadioButton("베이컨");
-            bacon.addChangeListener(this);
+            pepper = new JRadioButton("피망 100원", true);
+            pepper.addActionListener(this);
+            cheese = new JRadioButton("치즈 200원");
+            cheese.addActionListener(this);
+            peperoni = new JRadioButton("페퍼로니 300원");
+            peperoni.addActionListener(this);
+            bacon = new JRadioButton("베이컨 400원");
+            bacon.addActionListener(this);
             btnGroup = new ButtonGroup();
             btnGroup.add(pepper);
             btnGroup.add(cheese);
@@ -148,8 +188,7 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
         }
 
         @Override
-        public void stateChanged(ChangeEvent e) {
-            // System.out.println("토핑 called");
+        public void actionPerformed(ActionEvent e) {
             if (e.getSource() == pepper) {
                 temp2 = 0;
             } else if (e.getSource() == cheese) {
@@ -162,18 +201,18 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
         }
     }
 
-    class SizePanel extends JPanel implements ChangeListener {
+    class SizePanel extends JPanel implements ActionListener {
         private JRadioButton small, medium, large;
         private ButtonGroup btnGroup;
 
         public SizePanel() {
             this.setLayout(new GridLayout(3, 1));
-            small = new JRadioButton("small", true);
-            small.addChangeListener(this);
-            medium = new JRadioButton("Medium");
-            medium.addChangeListener(this);
-            large = new JRadioButton("Large");
-            large.addChangeListener(this);
+            small = new JRadioButton("small 10000원", true);
+            small.addActionListener(this);
+            medium = new JRadioButton("Medium 12000원");
+            medium.addActionListener(this);
+            large = new JRadioButton("Large 14000원");
+            large.addActionListener(this);
             btnGroup = new ButtonGroup();
             btnGroup.add(small);
             btnGroup.add(medium);
@@ -185,8 +224,7 @@ public class PizzaOrderDemo extends JFrame implements ActionListener {
         }
 
         @Override
-        public void stateChanged(ChangeEvent e) {
-            // System.out.println("사이즈 called");
+        public void actionPerformed(ActionEvent e) {
             if (e.getSource() == small) {
                 temp3 = 0;
             } else if (e.getSource() == medium) {
