@@ -7,26 +7,27 @@ import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.event.*;
 
-public class TextAreaFrame extends JFrame implements ActionListener {
+@SuppressWarnings("serial")
+public class TextAreaDemo extends JFrame implements ActionListener {
     protected JTextField textField;
     protected JTextArea textArea;
 
-    public TextAreaFrame() {
-        setTitle("Text Area Text");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public TextAreaDemo() {
+        this.setTitle("Text Area Text");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         textField = new JTextField(30);
         textField.addActionListener(this);
 
         textArea = new JTextArea(10, 30);
-        JScrollPane scrollPane = new JScrollPane(textArea);
         textArea.setEditable(false);
 
-        add(textField, BorderLayout.NORTH);
-        add(textArea, BorderLayout.CENTER);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(textField, BorderLayout.NORTH);
 
-        pack();
-        setVisible(true);
+        this.pack();
+        this.setVisible(true);
     }
 
     @Override
@@ -39,6 +40,6 @@ public class TextAreaFrame extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new TextAreaFrame();
+        new TextAreaDemo();
     }
 }

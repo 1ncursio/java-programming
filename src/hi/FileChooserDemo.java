@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import java.awt.event.*;
 import java.io.File;
 
+@SuppressWarnings("serial")
 public class FileChooserDemo extends JFrame implements ActionListener {
     private JButton openBtn, saveBtn;
     JFileChooser fileChooser;

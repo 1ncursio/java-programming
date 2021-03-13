@@ -14,6 +14,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class PizzaOrderDemo extends JFrame implements ActionListener {
     private int sum, temp1, temp2, temp3;
 

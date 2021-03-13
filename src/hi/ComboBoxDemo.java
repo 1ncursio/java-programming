@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class ComboBoxDemo extends JFrame implements ActionListener {
     private JLabel label;
     private JComboBox<String> animalList;
@@ -33,7 +34,7 @@ public class ComboBoxDemo extends JFrame implements ActionListener {
     }
 
     protected void changePicture(String name) {
-        ImageIcon icon = new ImageIcon(name + ".gif");
+        ImageIcon icon = new ImageIcon(name + ".jpg");
         label.setIcon(icon);
 
         label.setText(null);

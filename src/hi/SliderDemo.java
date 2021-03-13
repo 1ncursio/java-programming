@@ -10,9 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import java.awt.*;
-import java.awt.event.*;
-
+@SuppressWarnings("serial")
 public class SliderDemo extends JFrame implements ChangeListener {
     static final int INIT_VALUE = 30;
     private JButton OKBtn;
