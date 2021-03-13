@@ -45,9 +45,8 @@ public class TextConverter extends JFrame implements ActionListener {
             textOut.setText("");
             String result = toEnglish(textIn.getText());
             textOut.append(result);
-            if (e.getSource() == cancelBtn) {
-                textOut.setText("");
-            }
+        } else if (e.getSource() == cancelBtn) {
+            textOut.setText("");
         }
     }
 
