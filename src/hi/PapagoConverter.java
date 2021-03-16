@@ -86,13 +86,13 @@ public class PapagoConverter extends JFrame implements ActionListener {
         }
 
         String responseBody = post(apiURL, requestHeaders, text);
-
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(responseBody);
         JsonObject message = jsonObject.getAsJsonObject("message");
         JsonObject result = message.getAsJsonObject("result");
 
         JsonElement translatedTextJson = result.get("translatedText");
+        System.out.println(responseBody);
         String translatedText = translatedTextJson.getAsString();
         return translatedText;
     }
