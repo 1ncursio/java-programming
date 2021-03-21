@@ -13,7 +13,6 @@ import javax.swing.event.ChangeListener;
 @SuppressWarnings("serial")
 public class SliderDemo extends JFrame implements ChangeListener {
     static final int INIT_VALUE = 30;
-    private JButton OKBtn;
     private JSlider slider;
     private JButton btn;
 

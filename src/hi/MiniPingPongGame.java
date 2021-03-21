@@ -10,12 +10,14 @@ import java.awt.event.*;
 public class MiniPingPongGame extends JPanel implements Runnable {
     private static final long serialVersionUID = 1L;
 
+    private Score score;
     private Ball ball;
     private GamePaddle paddle1;
     private GamePaddle paddle2;
 
     public MiniPingPongGame() {
         ball = new Ball(this, Color.red);
+        score = new Score(getWidth(), getHeight());
         this.setBackground(Color.black);
         paddle1 = new GamePaddle(10, 150, 10, 80, 1);
         paddle2 = new GamePaddle(560, 150, 10, 80, 2);
@@ -29,14 +31,25 @@ public class MiniPingPongGame extends JPanel implements Runnable {
     }
 
     void checkCollision() {
-        if (ball.x + ball.xSpeed < 0)
-            ball.xSpeed = 3;
-        if (ball.x + ball.xSpeed > this.getWidth() - 2 * Ball.RADIUS)
-            ball.xSpeed = -3;
-        if (ball.y + ball.ySpeed < 0)
+        if (ball.y + ball.ySpeed < 0) {
             ball.ySpeed = 3;
-        if (ball.y + ball.ySpeed > this.getHeight() - 2 * Ball.RADIUS)
+            System.out.println("위 닿음");
+        }
+        if (ball.y + ball.ySpeed > this.getHeight() - 2 * Ball.RADIUS) {
+            System.out.println("밑 닿음");
             ball.ySpeed = -3;
+        }
+        if (ball.x + ball.xSpeed > this.getWidth() - 2 * Ball.RADIUS) {
+            System.out.println("오른쪽 닿음");
+            // score
+            score.player2 += 1;
+            ball.xSpeed = -3;
+        }
+        if (ball.x + ball.xSpeed < 0) {
+            score.player1 += 1;
+            System.out.println("왼쪽 닿음");
+            ball.xSpeed = 3;
+        }
     }
 
     @Override
@@ -46,6 +59,7 @@ public class MiniPingPongGame extends JPanel implements Runnable {
         ball.draw(g2d);
         paddle1.draw(g2d);
         paddle2.draw(g2d);
+        score.draw(g2d);
     }
 
     @Override
@@ -72,16 +86,8 @@ public class MiniPingPongGame extends JPanel implements Runnable {
         MiniPingPongGame game = new MiniPingPongGame();
         frame.add(game);
         frame.setVisible(true);
-        // while (true) {
-        // game.move();
-        // game.repaint();
-        // try {
-        // Thread.sleep(10);
-        // } catch (InterruptedException e) {
-        // // TODO: handle exception
-        // e.printStackTrace();
-        // }
-        // }
+        Thread thread = new Thread(game);
+        thread.start();
     }
 
     class Ball {
